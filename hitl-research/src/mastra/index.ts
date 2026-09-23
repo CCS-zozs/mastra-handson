@@ -14,13 +14,18 @@ import { researchAgent } from "./agents/research-agent";
 import { evaluationAgent } from "./agents/evaluation-agent";
 import { learningExtractionAgent } from "./agents/learning-extraction-agent";
 
+import { reportAgent } from "./agents/report-agent";
+import { generateReportWorkflow } from "./workflows/generate-report-workflow";
+
+
 export const mastra = new Mastra({
-  workflows: { researchWorkflow },
+  workflows: { researchWorkflow, generateReportWorkflow },
   agents: {
     queryEvaluationAgent,
     researchAgent,
     evaluationAgent,
-    learningExtractionAgent
+    learningExtractionAgent,
+    reportAgent,
   },
   storage: new LibSQLStore({
     id: "mastra-storage",
